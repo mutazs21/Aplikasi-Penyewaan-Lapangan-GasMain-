@@ -65,24 +65,33 @@
                 <div class="hidden lg:flex flex-1 items-center justify-end gap-8">
                     <nav class="flex items-center gap-8">
                         <a class="text-sm font-medium leading-normal hover:text-[#13ec5b] transition-colors"
-                            href="#">Beranda</a>
+                            href="#beranda">Beranda</a>
                         <a class="text-sm font-medium leading-normal hover:text-[#13ec5b] transition-colors"
-                            href="#">Fasilitas</a>
+                            href="lapangan.html">Fasilitas</a>
                         <a class="text-sm font-medium leading-normal hover:text-[#13ec5b] transition-colors"
                             href="#">Tentang Kami</a>
                         <a class="text-sm font-medium leading-normal hover:text-[#13ec5b] transition-colors"
                             href="#">Kontak</a>
                     </nav>
-                    <div class="flex gap-3">
-                        <button
+
+                    <div id="authButtons" class="flex gap-3">
+                        <a href="login.html"
                             class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-[#f0f4f2] text-[#111813] text-sm font-bold hover:bg-gray-200 transition-colors">
                             <span class="truncate">Masuk</span>
-                        </button>
-                        <button
+                        </a>
+                        <a href="daftar.html"
                             class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-[#13ec5b] text-[#111813] text-sm font-bold hover:bg-[#0fd650] transition-colors shadow-lg shadow-[#13ec5b]/20">
                             <span class="truncate">Daftar</span>
-                        </button>
+                        </a>
                     </div>
+
+                    <div id="userProfile" class="hidden items-center gap-3">
+                        <img src="assets/img/avatar.png" alt="User" class="w-9 h-9 rounded-full object-cover border" />
+                        <span id="username" class="text-sm font-bold text-[#111813]">
+                            Mumtaaz
+                        </span>
+                    </div>
+
                 </div>
                 <!-- Mobile Menu Button -->
                 <div class="lg:hidden">
@@ -95,30 +104,50 @@
             <div id="mobileMenu" class="hidden lg:hidden border-t border-[#f0f4f2] bg-white">
                 <nav class="flex flex-col px-4 py-4 gap-4">
                     <a class="text-sm font-medium leading-normal hover:text-[#13ec5b] transition-colors py-2"
-                        href="#">Beranda</a>
+                        href="#beranda">Beranda</a>
                     <a class="text-sm font-medium leading-normal hover:text-[#13ec5b] transition-colors py-2"
-                        href="#">Fasilitas</a>
+                        href="lapangan.html">Fasilitas</a>
                     <a class="text-sm font-medium leading-normal hover:text-[#13ec5b] transition-colors py-2"
                         href="#">Tentang Kami</a>
                     <a class="text-sm font-medium leading-normal hover:text-[#13ec5b] transition-colors py-2"
                         href="#">Kontak</a>
-                    <div class="flex flex-col gap-3 pt-4 border-t border-[#f0f4f2]">
-                        <button
+
+                    <!-- Mobile Auth Buttons -->
+                    <div id="mobileAuthButtons" class="flex flex-col gap-3 pt-4 border-t border-[#f0f4f2]">
+                        <a href="login.html"
                             class="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-[#f0f4f2] text-[#111813] text-sm font-bold hover:bg-gray-200 transition-colors">
                             <span class="truncate">Masuk</span>
-                        </button>
-                        <button
+                        </a>
+                        <a href="daftar.html"
                             class="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-[#13ec5b] text-[#111813] text-sm font-bold hover:bg-[#0fd650] transition-colors shadow-lg shadow-[#13ec5b]/20">
                             <span class="truncate">Daftar</span>
+                        </a>
+                    </div>
+
+                    <!-- Mobile User Profile -->
+                    <div id="mobileUserProfile" class="hidden flex-col gap-3 pt-4 border-t border-[#f0f4f2]">
+                        <div class="flex items-center gap-3 p-3 bg-[#f0f4f2] rounded-lg">
+                            <img src="assets/img/avatar.png" alt="User"
+                                class="w-10 h-10 rounded-full object-cover border-2 border-[#13ec5b]" />
+                            <div class="flex-1">
+                                <p id="mobileUsername" class="text-sm font-bold text-[#111813]">User</p>
+                                <p class="text-xs text-gray-500">Pengguna Aktif</p>
+                            </div>
+                        </div>
+                        <button onclick="logoutUser()"
+                            class="flex cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-10 px-6 bg-red-500 text-white text-sm font-bold hover:bg-red-600 transition-colors">
+                            <span class="material-symbols-outlined text-base">logout</span>
+                            <span class="truncate">Keluar</span>
                         </button>
                     </div>
+                    
                 </nav>
             </div>
         </header>
         <!-- NAVBAR END -->
 
         <!-- KONTEN UTAMA -->
-        <main class="flex-1 flex flex-col items-center">
+        <main class="flex-1 flex flex-col items-center" id="beranda">
             <!-- Hero Section -->
             <section class="w-full max-w-7xl px-4 md:px-10 py-6 md:py-10">
                 <div
@@ -386,31 +415,9 @@
 
     </div>
 
-    <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const menuIcon = mobileMenuBtn.querySelector('.material-symbols-outlined');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-
-            // Toggle icon between menu and close
-            if (mobileMenu.classList.contains('hidden')) {
-                menuIcon.textContent = 'menu';
-            } else {
-                menuIcon.textContent = 'close';
-            }
-        });
-
-        // Copy Promo Code Function
-        function copyPromo() {
-            const text = document.getElementById("promoCode").innerText;
-
-            navigator.clipboard.writeText(text).then(() => {
-                alert("Kode promo berhasil disalin 🚀");
-            });
-        }
-    </script>
+    <!-- Java Script -->
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+</body>
 
 </html>
