@@ -35,12 +35,12 @@
             color: #111813;
             border: 1px solid #f0f4f2;
         }
-        
+
         .filter-btn:hover {
             border-color: #13ec5b;
             color: #13ec5b;
         }
-        
+
         .filter-btn.active {
             background: #13ec5b;
             color: #111813;
@@ -61,12 +61,14 @@
         <header class="sticky top-0 z-50 w-full border-b border-[#f0f4f2] bg-white/95 backdrop-blur">
             <div class="px-4 md:px-10 py-3 flex items-center justify-between mx-auto max-w-7xl">
                 <!-- Logo -->
+                <a href="index.html">
                 <div class="flex items-center gap-3 text-[#111813] cursor-pointer">
                     <div class="size-10 flex items-center justify-center text-[#13ec5b]">
                         <img src="assets/img/Logo Gas Main.png" alt="Logo GasMain" class="w-10 h-10" />
                     </div>
                     <h2 class="text-lg md:text-xl font-bold leading-tight tracking-tight">GasMain</h2>
                 </div>
+                </a>
                 <!-- Desktop Nav & Actions -->
                 <div class="hidden lg:flex flex-1 items-center justify-end gap-8">
                     <nav class="flex items-center gap-8">
@@ -75,9 +77,10 @@
                         <a class="text-sm font-medium leading-normal hover:text-[#13ec5b] transition-colors"
                             href="lapangan.html">Fasilitas</a>
                         <a class="text-sm font-medium leading-normal hover:text-[#13ec5b] transition-colors"
-                            href="#">Tentang Kami</a>
+                            href="index.html#promo">Promo</a>
                         <a class="text-sm font-medium leading-normal hover:text-[#13ec5b] transition-colors"
-                            href="#">Kontak</a>
+                            href="https://wa.me/62895340502313?text=Halo%20saya%20ingin%20bertanya"
+                            target="_blank">Kontak</a>
                     </nav>
 
                     <div id="authButtons" class="flex gap-3">
@@ -92,7 +95,7 @@
                     </div>
 
                     <div id="userProfile" class="hidden items-center gap-3">
-                        <img src="assets/img/avatar.png" alt="User" class="w-9 h-9 rounded-full object-cover border" />
+                        <img src="assets/img/avatar.jpg" alt="User" class="w-9 h-9 rounded-full object-cover border" />
                         <span id="username" class="text-sm font-bold text-[#111813]">
                             Mumtaaz
                         </span>
@@ -114,9 +117,10 @@
                     <a class="text-sm font-medium leading-normal hover:text-[#13ec5b] transition-colors py-2"
                         href="lapangan.html">Fasilitas</a>
                     <a class="text-sm font-medium leading-normal hover:text-[#13ec5b] transition-colors py-2"
-                        href="#">Tentang Kami</a>
+                        href="index.html#promo">Promo</a>
                     <a class="text-sm font-medium leading-normal hover:text-[#13ec5b] transition-colors py-2"
-                        href="#">Kontak</a>
+                        href="https://wa.me/62895340502313?text=Halo%20saya%20ingin%20bertanya"
+                        target="_blank">Kontak</a>
 
                     <!-- Mobile Auth Buttons -->
                     <div id="mobileAuthButtons" class="flex flex-col gap-3 pt-4 border-t border-[#f0f4f2]">
@@ -133,7 +137,7 @@
                     <!-- Mobile User Profile -->
                     <div id="mobileUserProfile" class="hidden flex-col gap-3 pt-4 border-t border-[#f0f4f2]">
                         <div class="flex items-center gap-3 p-3 bg-[#f0f4f2] rounded-lg">
-                            <img src="assets/img/avatar.png" alt="User"
+                            <img src="assets/img/avatar.jpg" alt="User"
                                 class="w-10 h-10 rounded-full object-cover border-2 border-[#13ec5b]" />
                             <div class="flex-1">
                                 <p id="mobileUsername" class="text-sm font-bold text-[#111813]">User</p>
@@ -146,7 +150,7 @@
                             <span class="truncate">Keluar</span>
                         </button>
                     </div>
-                    
+
                 </nav>
             </div>
         </header>
@@ -155,7 +159,7 @@
         <!-- MAIN CONTENT -->
         <main class="flex-1 flex flex-col items-center">
             <div class="w-full max-w-7xl px-4 md:px-10 py-8">
-                
+
                 <!-- Header Section -->
                 <div class="mb-8">
                     <h1 class="text-3xl md:text-4xl font-black mb-2">Temukan Lapangan Olahraga</h1>
@@ -164,21 +168,23 @@
 
                 <!-- Filter Pills -->
                 <div class="flex flex-wrap gap-3 mb-8">
-                    <button onclick="filterLapangan('all')" 
+                    <button onclick="filterLapangan('all')"
                         class="filter-btn active px-6 py-2 rounded-full font-bold text-sm transition-all">
                         Semua
                     </button>
-                    <button onclick="filterLapangan('bulutangkis')" 
-                        class="filter-btn px-6 py-2 rounded-full font-bold text-sm transition-all flex items-center gap-2">
-                        <span class="material-symbols-outlined text-lg">sports_tennis</span>
-                        Bulutangkis
-                    </button>
-                    <button onclick="filterLapangan('padel')" 
+                    <section id="section-bulutangkis">
+                        <button onclick="filterLapangan('bulutangkis')"
+                            class="filter-btn px-6 py-2 rounded-full font-bold text-sm transition-all flex items-center gap-2">
+                            <span class="material-symbols-outlined text-lg">sports_tennis</span>
+                            Bulutangkis
+                        </button>
+                    </section>
+                    <button onclick="filterLapangan('padel')"
                         class="filter-btn px-6 py-2 rounded-full font-bold text-sm transition-all flex items-center gap-2">
                         <span class="material-symbols-outlined text-lg">sports_baseball</span>
                         Padel
                     </button>
-                    <button onclick="filterLapangan('futsal')" 
+                    <button onclick="filterLapangan('futsal')"
                         class="filter-btn px-6 py-2 rounded-full font-bold text-sm transition-all flex items-center gap-2">
                         <span class="material-symbols-outlined text-lg">sports_soccer</span>
                         Futsal
@@ -187,11 +193,14 @@
 
                 <!-- Lapangan Grid -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-                    
+
                     <!-- Card 1 - Futsal -->
-                    <div class="lapangan-card futsal group bg-white rounded-xl border border-[#f0f4f2] overflow-hidden hover:shadow-xl hover:border-[#13ec5b]/50 transition-all duration-300">
+                    <div
+                        class="lapangan-card futsal group bg-white rounded-xl border border-[#f0f4f2] overflow-hidden hover:shadow-xl hover:border-[#13ec5b]/50 transition-all duration-300">
                         <div class="relative aspect-video overflow-hidden bg-gray-200">
-                            <img src="https://images.unsplash.com/photo-1624880357913-a8539238245b?w=800&q=80" alt="Mega Futsal Arena" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                            <img src="https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzOYlmPsr9C6zwvG_c-c7WljIhGSiamhkrB5vN1CjbHNBmL_4PxCAM_4ZuAA3PJ_RGglF1CyT3TVtQ5wJ9J_CwAXVZeUdSpin0xia7hXUV322_tHP0mz9KIETRtRYb-8X1OD4-I=s1360-w1360-h1020-rw"
+                                alt="Mega Futsal Arena"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                             <div class="absolute top-3 left-3 px-3 py-1 bg-white rounded-full text-xs font-bold">
                                 Futsal
                             </div>
@@ -201,7 +210,8 @@
                                 <span class="material-symbols-outlined text-sm">location_on</span>
                                 <span>Jakarta Selatan</span>
                             </div>
-                            <h3 class="text-lg font-bold mb-2 group-hover:text-[#13ec5b] transition-colors">Mega Futsal Arena</h3>
+                            <h3 class="text-lg font-bold mb-2 group-hover:text-[#13ec5b] transition-colors">Mega Futsal
+                                Arena</h3>
                             <div class="flex items-center gap-1 mb-3">
                                 <span class="material-symbols-outlined text-yellow-400 text-lg">star</span>
                                 <span class="font-bold text-sm">4.8</span>
@@ -210,9 +220,11 @@
                             <div class="flex items-center justify-between">
                                 <div>
                                     <p class="text-xs text-gray-500">Mulai dari</p>
-                                    <p class="text-lg font-bold text-[#13ec5b]">Rp 150.000<span class="text-xs text-gray-500">/jam</span></p>
+                                    <p class="text-lg font-bold text-[#13ec5b]">Rp 80.000<span
+                                            class="text-xs text-gray-500">/jam</span></p>
                                 </div>
-                                <button class="px-4 py-2 bg-[#13ec5b] hover:bg-[#0fd650] text-[#111813] text-xs font-bold rounded-lg transition-colors">
+                                <button onclick="pilihLapangan('mega-futsal')"
+                                    class="px-4 py-2 bg-[#13ec5b] hover:bg-[#0fd650] text-[#111813] text-xs font-bold rounded-lg transition-colors">
                                     Lihat Detail
                                 </button>
                             </div>
@@ -220,9 +232,12 @@
                     </div>
 
                     <!-- Card 2 - Bulutangkis -->
-                    <div class="lapangan-card bulutangkis group bg-white rounded-xl border border-[#f0f4f2] overflow-hidden hover:shadow-xl hover:border-[#13ec5b]/50 transition-all duration-300">
+                    <div
+                        class="lapangan-card bulutangkis group bg-white rounded-xl border border-[#f0f4f2] overflow-hidden hover:shadow-xl hover:border-[#13ec5b]/50 transition-all duration-300">
                         <div class="relative aspect-video overflow-hidden bg-gray-200">
-                            <img src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=800&q=80" alt="GOR Sudirman" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                            <img src="https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwPSOQYFHU70kSIfwmT3x5Ntzy3l3Eg1g0ZzNpXZ5XYkRHoF4rMr3JCKSOoi7SKLlYhkPteQsdCcua823p86MtzC_hb53RyLiwGENqbCX2W1MaAfRB1CP9BsKJNt0AaOkmKkZnGCQ=w408-h306-k-no"
+                                alt="GOR Sudirman"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                             <div class="absolute top-3 left-3 px-3 py-1 bg-white rounded-full text-xs font-bold">
                                 Bulutangkis
                             </div>
@@ -232,7 +247,8 @@
                                 <span class="material-symbols-outlined text-sm">location_on</span>
                                 <span>Jakarta Pusat</span>
                             </div>
-                            <h3 class="text-lg font-bold mb-2 group-hover:text-[#13ec5b] transition-colors">GOR Sudirman</h3>
+                            <h3 class="text-lg font-bold mb-2 group-hover:text-[#13ec5b] transition-colors">GOR Sudirman
+                            </h3>
                             <div class="flex items-center gap-1 mb-3">
                                 <span class="material-symbols-outlined text-yellow-400 text-lg">star</span>
                                 <span class="font-bold text-sm">4.9</span>
@@ -241,9 +257,11 @@
                             <div class="flex items-center justify-between">
                                 <div>
                                     <p class="text-xs text-gray-500">Mulai dari</p>
-                                    <p class="text-lg font-bold text-[#13ec5b]">Rp 80.000<span class="text-xs text-gray-500">/jam</span></p>
+                                    <p class="text-lg font-bold text-[#13ec5b]">Rp 40.000<span
+                                            class="text-xs text-gray-500">/jam</span></p>
                                 </div>
-                                <button class="px-4 py-2 bg-[#13ec5b] hover:bg-[#0fd650] text-[#111813] text-xs font-bold rounded-lg transition-colors">
+                                <button onclick="pilihLapangan('gor-sudirman')"
+                                    class="px-4 py-2 bg-[#13ec5b] hover:bg-[#0fd650] text-[#111813] text-xs font-bold rounded-lg transition-colors">
                                     Lihat Detail
                                 </button>
                             </div>
@@ -251,9 +269,12 @@
                     </div>
 
                     <!-- Card 3 - Padel -->
-                    <div class="lapangan-card padel group bg-white rounded-xl border border-[#f0f4f2] overflow-hidden hover:shadow-xl hover:border-[#13ec5b]/50 transition-all duration-300">
+                    <div
+                        class="lapangan-card padel group bg-white rounded-xl border border-[#f0f4f2] overflow-hidden hover:shadow-xl hover:border-[#13ec5b]/50 transition-all duration-300">
                         <div class="relative aspect-video overflow-hidden bg-gray-200">
-                            <img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=800&q=80" alt="Padel Club BSD" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                            <img src="https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxhDli0-o67Wi0s3yl3OyLsb7a6XW0FZSwDRRIdL0hEtHefGeAmHjlCfE3CbMOlEGeVmfycec8AKjI_VVWUC3i9YhNjXhDBT8BiXj2jZYUuI3FskR9kmSPkEXmYRquWYfKEro9J=s1360-w1360-h1020-rw"
+                                alt="Padel Club BSD"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                             <div class="absolute top-3 left-3 px-3 py-1 bg-white rounded-full text-xs font-bold">
                                 Padel
                             </div>
@@ -263,7 +284,8 @@
                                 <span class="material-symbols-outlined text-sm">location_on</span>
                                 <span>BSD City</span>
                             </div>
-                            <h3 class="text-lg font-bold mb-2 group-hover:text-[#13ec5b] transition-colors">Padel Club BSD</h3>
+                            <h3 class="text-lg font-bold mb-2 group-hover:text-[#13ec5b] transition-colors">Padel Club
+                                BSD</h3>
                             <div class="flex items-center gap-1 mb-3">
                                 <span class="material-symbols-outlined text-yellow-400 text-lg">star</span>
                                 <span class="font-bold text-sm">5.0</span>
@@ -272,9 +294,11 @@
                             <div class="flex items-center justify-between">
                                 <div>
                                     <p class="text-xs text-gray-500">Mulai dari</p>
-                                    <p class="text-lg font-bold text-[#13ec5b]">Rp 250.000<span class="text-xs text-gray-500">/jam</span></p>
+                                    <p class="text-lg font-bold text-[#13ec5b]">Rp 250.000<span
+                                            class="text-xs text-gray-500">/jam</span></p>
                                 </div>
-                                <button class="px-4 py-2 bg-[#13ec5b] hover:bg-[#0fd650] text-[#111813] text-xs font-bold rounded-lg transition-colors">
+                                <button onclick="pilihLapangan('padel-bsd')"
+                                    class="px-4 py-2 bg-[#13ec5b] hover:bg-[#0fd650] text-[#111813] text-xs font-bold rounded-lg transition-colors">
                                     Lihat Detail
                                 </button>
                             </div>
@@ -282,9 +306,12 @@
                     </div>
 
                     <!-- Card 4 - Futsal -->
-                    <div class="lapangan-card futsal group bg-white rounded-xl border border-[#f0f4f2] overflow-hidden hover:shadow-xl hover:border-[#13ec5b]/50 transition-all duration-300">
+                    <div
+                        class="lapangan-card futsal group bg-white rounded-xl border border-[#f0f4f2] overflow-hidden hover:shadow-xl hover:border-[#13ec5b]/50 transition-all duration-300">
                         <div class="relative aspect-video overflow-hidden bg-gray-200">
-                            <img src="https://images.unsplash.com/photo-1575361204480-aadea25e6e68?w=800&q=80" alt="Champion Futsal" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                            <img src="https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwKaAmwaV1geluQY7nl_wSlNe2IGFx9lUBL1qqG0CIzG3aYyvKFIIIYwGamHP11_I_TaEtLcuSBjWDN7h2QN3Mxouco0cV-EfCFXz_x2b6KY6BtSADqrTAlofb_vQIAuu9-0emx=s1360-w1360-h1020-rw"
+                                alt="Champion Futsal"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                             <div class="absolute top-3 left-3 px-3 py-1 bg-white rounded-full text-xs font-bold">
                                 Futsal
                             </div>
@@ -294,7 +321,8 @@
                                 <span class="material-symbols-outlined text-sm">location_on</span>
                                 <span>Bekasi</span>
                             </div>
-                            <h3 class="text-lg font-bold mb-2 group-hover:text-[#13ec5b] transition-colors">Champion Futsal</h3>
+                            <h3 class="text-lg font-bold mb-2 group-hover:text-[#13ec5b] transition-colors">Champion
+                                Futsal</h3>
                             <div class="flex items-center gap-1 mb-3">
                                 <span class="material-symbols-outlined text-yellow-400 text-lg">star</span>
                                 <span class="font-bold text-sm">4.5</span>
@@ -303,9 +331,11 @@
                             <div class="flex items-center justify-between">
                                 <div>
                                     <p class="text-xs text-gray-500">Mulai dari</p>
-                                    <p class="text-lg font-bold text-[#13ec5b]">Rp 120.000<span class="text-xs text-gray-500">/jam</span></p>
+                                    <p class="text-lg font-bold text-[#13ec5b]">Rp 90.000<span
+                                            class="text-xs text-gray-500">/jam</span></p>
                                 </div>
-                                <button class="px-4 py-2 bg-[#13ec5b] hover:bg-[#0fd650] text-[#111813] text-xs font-bold rounded-lg transition-colors">
+                                <button onclick="pilihLapangan('champion-futsal')"
+                                    class="px-4 py-2 bg-[#13ec5b] hover:bg-[#0fd650] text-[#111813] text-xs font-bold rounded-lg transition-colors">
                                     Lihat Detail
                                 </button>
                             </div>
@@ -313,9 +343,12 @@
                     </div>
 
                     <!-- Card 5 - Bulutangkis -->
-                    <div class="lapangan-card bulutangkis group bg-white rounded-xl border border-[#f0f4f2] overflow-hidden hover:shadow-xl hover:border-[#13ec5b]/50 transition-all duration-300">
+                    <div
+                        class="lapangan-card bulutangkis group bg-white rounded-xl border border-[#f0f4f2] overflow-hidden hover:shadow-xl hover:border-[#13ec5b]/50 transition-all duration-300">
                         <div class="relative aspect-video overflow-hidden bg-gray-200">
-                            <img src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=800&q=80" alt="Cendrawasih Hall" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                            <img src="https://www.sardanagroup.co.id/HP/production/images/news/Shamrock%20Badminton%20Club%20Medan%20.png_1706171520.png"
+                                alt="Cendrawasih Hall"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                             <div class="absolute top-3 left-3 px-3 py-1 bg-white rounded-full text-xs font-bold">
                                 Bulutangkis
                             </div>
@@ -325,7 +358,8 @@
                                 <span class="material-symbols-outlined text-sm">location_on</span>
                                 <span>Jakarta Barat</span>
                             </div>
-                            <h3 class="text-lg font-bold mb-2 group-hover:text-[#13ec5b] transition-colors">Cendrawasih Hall</h3>
+                            <h3 class="text-lg font-bold mb-2 group-hover:text-[#13ec5b] transition-colors">Cendrawasih
+                                Hall</h3>
                             <div class="flex items-center gap-1 mb-3">
                                 <span class="material-symbols-outlined text-yellow-400 text-lg">star</span>
                                 <span class="font-bold text-sm">4.7</span>
@@ -334,9 +368,11 @@
                             <div class="flex items-center justify-between">
                                 <div>
                                     <p class="text-xs text-gray-500">Mulai dari</p>
-                                    <p class="text-lg font-bold text-[#13ec5b]">Rp 90.000<span class="text-xs text-gray-500">/jam</span></p>
+                                    <p class="text-lg font-bold text-[#13ec5b]">Rp 50.000<span
+                                            class="text-xs text-gray-500">/jam</span></p>
                                 </div>
-                                <button class="px-4 py-2 bg-[#13ec5b] hover:bg-[#0fd650] text-[#111813] text-xs font-bold rounded-lg transition-colors">
+                                <button onclick="pilihLapangan('cendrawasih-hall')"
+                                    class="px-4 py-2 bg-[#13ec5b] hover:bg-[#0fd650] text-[#111813] text-xs font-bold rounded-lg transition-colors">
                                     Lihat Detail
                                 </button>
                             </div>
@@ -344,9 +380,12 @@
                     </div>
 
                     <!-- Card 6 - Padel -->
-                    <div class="lapangan-card padel group bg-white rounded-xl border border-[#f0f4f2] overflow-hidden hover:shadow-xl hover:border-[#13ec5b]/50 transition-all duration-300">
+                    <div
+                        class="lapangan-card padel group bg-white rounded-xl border border-[#f0f4f2] overflow-hidden hover:shadow-xl hover:border-[#13ec5b]/50 transition-all duration-300">
                         <div class="relative aspect-video overflow-hidden bg-gray-200">
-                            <img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=800&q=80" alt="Kemang Padel" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                            <img src="https://brickmortar.id/wp-content/uploads/2024/08/Apa-itu-Olah-Raga-Padel.jpeg"
+                                alt="Kemang Padel"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                             <div class="absolute top-3 left-3 px-3 py-1 bg-white rounded-full text-xs font-bold">
                                 Padel
                             </div>
@@ -356,7 +395,8 @@
                                 <span class="material-symbols-outlined text-sm">location_on</span>
                                 <span>Kemang</span>
                             </div>
-                            <h3 class="text-lg font-bold mb-2 group-hover:text-[#13ec5b] transition-colors">Kemang Padel</h3>
+                            <h3 class="text-lg font-bold mb-2 group-hover:text-[#13ec5b] transition-colors">Kemang Padel
+                            </h3>
                             <div class="flex items-center gap-1 mb-3">
                                 <span class="material-symbols-outlined text-yellow-400 text-lg">star</span>
                                 <span class="font-bold text-sm">4.9</span>
@@ -365,9 +405,11 @@
                             <div class="flex items-center justify-between">
                                 <div>
                                     <p class="text-xs text-gray-500">Mulai dari</p>
-                                    <p class="text-lg font-bold text-[#13ec5b]">Rp 275.000<span class="text-xs text-gray-500">/jam</span></p>
+                                    <p class="text-lg font-bold text-[#13ec5b]">Rp 275.000<span
+                                            class="text-xs text-gray-500">/jam</span></p>
                                 </div>
-                                <button class="px-4 py-2 bg-[#13ec5b] hover:bg-[#0fd650] text-[#111813] text-xs font-bold rounded-lg transition-colors">
+                                <button onclick="pilihLapangan('kemang-padel')"
+                                    class="px-4 py-2 bg-[#13ec5b] hover:bg-[#0fd650] text-[#111813] text-xs font-bold rounded-lg transition-colors">
                                     Lihat Detail
                                 </button>
                             </div>
@@ -375,9 +417,12 @@
                     </div>
 
                     <!-- Card 7 - Futsal -->
-                    <div class="lapangan-card futsal group bg-white rounded-xl border border-[#f0f4f2] overflow-hidden hover:shadow-xl hover:border-[#13ec5b]/50 transition-all duration-300">
+                    <div
+                        class="lapangan-card futsal group bg-white rounded-xl border border-[#f0f4f2] overflow-hidden hover:shadow-xl hover:border-[#13ec5b]/50 transition-all duration-300">
                         <div class="relative aspect-video overflow-hidden bg-gray-200">
-                            <img src="https://images.unsplash.com/photo-1624880357913-a8539238245b?w=800&q=80" alt="Golden Sport Center" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                            <img src="https://asset.ayo.co.id/image/venue/172654536115495.image_cropper_1726545293259.jpg"
+                                alt="Golden Sport Center"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                             <div class="absolute top-3 left-3 px-3 py-1 bg-white rounded-full text-xs font-bold">
                                 Futsal
                             </div>
@@ -388,7 +433,8 @@
                                 <span class="material-symbols-outlined text-sm">location_on</span>
                                 <span>Depok</span>
                             </div>
-                            <h3 class="text-lg font-bold mb-2 group-hover:text-[#13ec5b] transition-colors">Golden Sport Center</h3>
+                            <h3 class="text-lg font-bold mb-2 group-hover:text-[#13ec5b] transition-colors">Golden Sport
+                                Center</h3>
                             <div class="flex items-center gap-1 mb-3">
                                 <span class="material-symbols-outlined text-yellow-400 text-lg">star</span>
                                 <span class="font-bold text-sm">4.6</span>
@@ -397,9 +443,11 @@
                             <div class="flex items-center justify-between">
                                 <div>
                                     <p class="text-xs text-gray-500">Mulai dari</p>
-                                    <p class="text-lg font-bold text-[#13ec5b]">Rp 110.000<span class="text-xs text-gray-500">/jam</span></p>
+                                    <p class="text-lg font-bold text-[#13ec5b]">Rp 95.000<span
+                                            class="text-xs text-gray-500">/jam</span></p>
                                 </div>
-                                <button class="px-4 py-2 bg-[#13ec5b] hover:bg-[#0fd650] text-[#111813] text-xs font-bold rounded-lg transition-colors">
+                                <button onclick="pilihLapangan('golden-sport')"
+                                    class="px-4 py-2 bg-[#13ec5b] hover:bg-[#0fd650] text-[#111813] text-xs font-bold rounded-lg transition-colors">
                                     Lihat Detail
                                 </button>
                             </div>
@@ -407,9 +455,12 @@
                     </div>
 
                     <!-- Card 8 - Bulutangkis -->
-                    <div class="lapangan-card bulutangkis group bg-white rounded-xl border border-[#f0f4f2] overflow-hidden hover:shadow-xl hover:border-[#13ec5b]/50 transition-all duration-300">
+                    <div
+                        class="lapangan-card bulutangkis group bg-white rounded-xl border border-[#f0f4f2] overflow-hidden hover:shadow-xl hover:border-[#13ec5b]/50 transition-all duration-300">
                         <div class="relative aspect-video overflow-hidden bg-gray-200">
-                            <img src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=800&q=80" alt="Arena 99" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                            <img src="https://asset.ayo.co.id/image/venue/170079891659689.image_cropper_1700798873836_large.jpg"
+                                alt="Arena 99"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                             <div class="absolute top-3 left-3 px-3 py-1 bg-white rounded-full text-xs font-bold">
                                 Bulutangkis
                             </div>
@@ -419,7 +470,8 @@
                                 <span class="material-symbols-outlined text-sm">location_on</span>
                                 <span>Kelapa Gading</span>
                             </div>
-                            <h3 class="text-lg font-bold mb-2 group-hover:text-[#13ec5b] transition-colors">Arena 99</h3>
+                            <h3 class="text-lg font-bold mb-2 group-hover:text-[#13ec5b] transition-colors">Arena 99
+                            </h3>
                             <div class="flex items-center gap-1 mb-3">
                                 <span class="material-symbols-outlined text-yellow-400 text-lg">star</span>
                                 <span class="font-bold text-sm">4.7</span>
@@ -428,9 +480,11 @@
                             <div class="flex items-center justify-between">
                                 <div>
                                     <p class="text-xs text-gray-500">Mulai dari</p>
-                                    <p class="text-lg font-bold text-[#13ec5b]">Rp 95.000<span class="text-xs text-gray-500">/jam</span></p>
+                                    <p class="text-lg font-bold text-[#13ec5b]">Rp 55.000<span
+                                            class="text-xs text-gray-500">/jam</span></p>
                                 </div>
-                                <button class="px-4 py-2 bg-[#13ec5b] hover:bg-[#0fd650] text-[#111813] text-xs font-bold rounded-lg transition-colors">
+                                <button onclick="pilihLapangan('arena-99')"
+                                    class="px-4 py-2 bg-[#13ec5b] hover:bg-[#0fd650] text-[#111813] text-xs font-bold rounded-lg transition-colors">
                                     Lihat Detail
                                 </button>
                             </div>
@@ -462,14 +516,16 @@
                     <!-- Links Column 1 -->
                     <div class="flex flex-col gap-3">
                         <h4 class="font-bold text-[#111813]">Layanan</h4>
-                        <a class="text-gray-500 text-sm hover:text-[#13ec5b] transition-colors" href="#">Cari Lapangan</a>
+                        <a class="text-gray-500 text-sm hover:text-[#13ec5b] transition-colors" href="#">Cari
+                            Lapangan</a>
                         <a class="text-gray-500 text-sm hover:text-[#13ec5b] transition-colors" href="#">Membership</a>
                         <a class="text-gray-500 text-sm hover:text-[#13ec5b] transition-colors" href="#">Promo</a>
                     </div>
                     <!-- Links Column 2 -->
                     <div class="flex flex-col gap-3">
                         <h4 class="font-bold text-[#111813]">Perusahaan</h4>
-                        <a class="text-gray-500 text-sm hover:text-[#13ec5b] transition-colors" href="#">Tentang Kami</a>
+                        <a class="text-gray-500 text-sm hover:text-[#13ec5b] transition-colors" href="#">Tentang
+                            Kami</a>
                         <a class="text-gray-500 text-sm hover:text-[#13ec5b] transition-colors" href="#">Karir</a>
                         <a class="text-gray-500 text-sm hover:text-[#13ec5b] transition-colors" href="#">Kontak</a>
                     </div>
@@ -488,8 +544,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="border-t border-[#f0f4f2] pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <p class="text-gray-400 text-sm text-center md:text-left">© 2024 GasMain. All rights reserved.</p>
+                <div
+                    class="border-t border-[#f0f4f2] pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p class="text-gray-400 text-sm text-center md:text-left">© 2024 SportBooking. All rights reserved.
+                    </p>
                     <div class="flex gap-6">
                         <a class="text-gray-400 text-sm hover:text-[#13ec5b]" href="#">Privacy Policy</a>
                         <a class="text-gray-400 text-sm hover:text-[#13ec5b]" href="#">Terms of Service</a>
@@ -504,22 +562,24 @@
     <!-- Auth Script -->
     <script src="js/auth.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/lapangan-data.js"></script>
+    <script src="js/booking.js"></script>
 
     <script>
         // Filter Lapangan Function - SEDERHANA
         function filterLapangan(category) {
             // Ambil semua card lapangan
             const cards = document.querySelectorAll('.lapangan-card');
-            
+
             // Ambil semua tombol filter
             const buttons = document.querySelectorAll('.filter-btn');
-            
+
             // Hapus class active dari semua tombol
             buttons.forEach(btn => btn.classList.remove('active'));
-            
+
             // Tambah class active ke tombol yang diklik
             event.target.classList.add('active');
-            
+
             // Loop setiap card
             cards.forEach(card => {
                 if (category === 'all') {

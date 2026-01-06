@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Pemesanan Berhasil - GasMain</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;700;900&family=Noto+Sans:wght@400;500;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes checkmark {
+            from {
+                transform: scale(0);
+            }
+
+            to {
+                transform: scale(1);
+            }
+        }
+
+        .animate-fadeIn {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .animate-check {
+            animation: checkmark 0.5s ease-out 0.3s both;
+        }
+    </style>
+</head>
+
+<body class="bg-[#f6f8f6] text-[#111813]">
+
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-50 w-full border-b border-[#f0f4f2] bg-white/95 backdrop-blur">
+        <div class="px-4 md:px-10 py-3 flex items-center justify-between mx-auto max-w-7xl">
+            <!-- Logo -->
+            <a href="index.html">
+                <div class="flex items-center gap-3 text-[#111813] cursor-pointer">
+                    <div class="size-10 flex items-center justify-center text-[#13ec5b]">
+                        <img src="assets/img/Logo Gas Main.png" alt="Logo GasMain" class="w-10 h-10" />
+                    </div>
+                    <h2 class="text-lg md:text-xl font-bold leading-tight tracking-tight">GasMain</h2>
+                </div>
+            </a>
+            <!-- Desktop Nav & Actions -->
+            <div class="hidden lg:flex flex-1 items-center justify-end gap-8">
+                <nav class="flex items-center gap-8">
+                    <a class="text-sm font-medium leading-normal hover:text-[#13ec5b] transition-colors"
+                        href="index.html">Beranda</a>
+                    <a class="text-sm font-medium leading-normal hover:text-[#13ec5b] transition-colors"
+                        href="lapangan.html">Fasilitas</a>
+                    <a class="text-sm font-medium leading-normal hover:text-[#13ec5b] transition-colors"
+                        href="index.html#promo">Promo</a>
+                    <a class="text-sm font-medium leading-normal hover:text-[#13ec5b] transition-colors"
+                        href="https://wa.me/62895340502313?text=Halo%20saya%20ingin%20bertanya"
+                        target="_blank">Kontak</a>
+                </nav>
+
+                <div id="authButtons" class="flex gap-3">
+                    <a href="login.html"
+                        class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-[#f0f4f2] text-[#111813] text-sm font-bold hover:bg-gray-200 transition-colors">
+                        <span class="truncate">Masuk</span>
+                    </a>
+                    <a href="daftar.html"
+                        class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-[#13ec5b] text-[#111813] text-sm font-bold hover:bg-[#0fd650] transition-colors shadow-lg shadow-[#13ec5b]/20">
+                        <span class="truncate">Daftar</span>
+                    </a>
+                </div>
+
+                <div id="userProfile" class="hidden items-center gap-3">
+                    <img src="assets/img/avatar.jpg" alt="User" class="w-9 h-9 rounded-full object-cover border" />
+                    <span id="username" class="text-sm font-bold text-[#111813]">
+                        Mumtaaz
+                    </span>
+                </div>
+
+            </div>
+            <!-- Mobile Menu Button -->
+            <div class="lg:hidden">
+                <button id="mobileMenuBtn" class="p-2 text-[#111813]">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden border-t border-[#f0f4f2] bg-white">
+            <nav class="flex flex-col px-4 py-4 gap-4">
+                <a class="text-sm font-medium leading-normal hover:text-[#13ec5b] transition-colors py-2"
+                    href="index.html">Beranda</a>
+                <a class="text-sm font-medium leading-normal hover:text-[#13ec5b] transition-colors py-2"
+                    href="lapangan.html">Fasilitas</a>
+                <a class="text-sm font-medium leading-normal hover:text-[#13ec5b] transition-colors py-2"
+                    href="index.html#promo">Promo</a>
+                <a class="text-sm font-medium leading-normal hover:text-[#13ec5b] transition-colors py-2"
+                    href="https://wa.me/62895340502313?text=Halo%20saya%20ingin%20bertanya" target="_blank">Kontak</a>
+
+                <!-- Mobile Auth Buttons -->
+                <div id="mobileAuthButtons" class="flex flex-col gap-3 pt-4 border-t border-[#f0f4f2]">
+                    <a href="login.html"
+                        class="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-[#f0f4f2] text-[#111813] text-sm font-bold hover:bg-gray-200 transition-colors">
+                        <span class="truncate">Masuk</span>
+                    </a>
+                    <a href="daftar.html"
+                        class="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-[#13ec5b] text-[#111813] text-sm font-bold hover:bg-[#0fd650] transition-colors shadow-lg shadow-[#13ec5b]/20">
+                        <span class="truncate">Daftar</span>
+                    </a>
+                </div>
+
+                <!-- Mobile User Profile -->
+                <div id="mobileUserProfile" class="hidden flex-col gap-3 pt-4 border-t border-[#f0f4f2]">
+                    <div class="flex items-center gap-3 p-3 bg-[#f0f4f2] rounded-lg">
+                        <img src="assets/img/avatar.jpg" alt="User"
+                            class="w-10 h-10 rounded-full object-cover border-2 border-[#13ec5b]" />
+                        <div class="flex-1">
+                            <p id="mobileUsername" class="text-sm font-bold text-[#111813]">User</p>
+                            <p class="text-xs text-gray-500">Pengguna Aktif</p>
+                        </div>
+                    </div>
+                    <button onclick="logoutUser()"
+                        class="flex cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-10 px-6 bg-red-500 text-white text-sm font-bold hover:bg-red-600 transition-colors">
+                        <span class="material-symbols-outlined text-base">logout</span>
+                        <span class="truncate">Keluar</span>
+                    </button>
+                </div>
+
+            </nav>
+        </div>
+    </header>
+    <!-- NAVBAR END -->
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 py-12">
+        <div class="max-w-4xl mx-auto px-4 md:px-10">
+
+            <!-- Success Icon -->
+            <div class="text-center mb-8 animate-fadeIn">
+                <div
+                    class="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-[#13ec5b] to-[#0fd650] rounded-full mb-6 animate-check">
+                    <span class="material-symbols-outlined text-white text-5xl">check_circle</span>
+                </div>
+                <h1 class="text-3xl md:text-4xl font-black mb-3">Pemesanan Berhasil!</h1>
+                <p class="text-gray-500 max-w-xl mx-auto">Terima kasih, lapangan Anda telah diamankan. Silakan
+                    selesaikan pembayaran untuk memverifikasi pesanan Anda.</p>
+            </div>
+
+            <!-- Booking Card -->
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden mb-6 animate-fadeIn"
+                style="animation-delay: 0.2s;">
+
+                <!-- Venue Image -->
+                <div class="relative h-56 bg-gradient-to-br from-teal-600 to-teal-800">
+                    <img src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=800" alt="Lapangan"
+                        class="w-full h-full object-cover opacity-60" />
+                    <div
+                        class="absolute top-4 left-4 px-3 py-1.5 bg-[#13ec5b] text-[#111813] rounded-full text-xs font-bold flex items-center gap-1">
+                        <span class="material-symbols-outlined text-sm">verified</span>
+                        CONFIRMED
+                    </div>
+                </div>
+
+                <!-- Booking Details -->
+                <div class="p-8">
+                    <div class="flex items-start justify-between mb-6 pb-6 border-b">
+                        <div>
+                            <h2 class="text-2xl font-black mb-1">Kode Booking: <span class="text-[#13ec5b]"
+                                    id="bookingCode">#BOOK-889922</span></h2>
+                            <p class="text-sm text-gray-500">Badminton Court A - Gelora Bung Karno</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <!-- Tanggal -->
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 bg-[#f0f4f2] rounded-lg flex items-center justify-center flex-shrink-0">
+                                <span class="material-symbols-outlined text-[#13ec5b]">calendar_today</span>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500 mb-1">Tanggal</p>
+                                <p class="font-bold text-lg" id="tanggalDisplay">12 Okt 2023</p>
+                            </div>
+                        </div>
+
+                        <!-- Waktu -->
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 bg-[#f0f4f2] rounded-lg flex items-center justify-center flex-shrink-0">
+                                <span class="material-symbols-outlined text-[#13ec5b]">schedule</span>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500 mb-1">Waktu</p>
+                                <p class="font-bold text-lg" id="waktuDisplay">19:00 - 21:00 WIB</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Total Payment -->
+                    <div class="bg-gradient-to-r from-[#f0f4f2] to-white rounded-xl p-6 mb-6">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-sm text-gray-500 mb-1">Total Pembayaran</p>
+                                <p class="text-xs text-gray-400">Termasuk pajak & biaya layanan</p>
+                            </div>
+                            <p class="text-3xl font-black text-[#13ec5b]" id="totalDisplay">Rp 150.000</p>
+                        </div>
+                    </div>
+
+                    <!-- Info Box -->
+                    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-6 flex items-start gap-3">
+                        <span class="material-symbols-outlined text-blue-500 flex-shrink-0">info</span>
+                        <div class="text-sm">
+                            <p class="text-blue-900">Tiket elektronik dan instruksi pembayaran telah dikirim ke <span
+                                    class="font-bold" id="emailDisplay">user@example.com</span>.</p>
+                            <p class="text-blue-700 mt-1">Harap lakukan pembayaran sebelum <span class="font-bold"
+                                    id="deadlineDisplay">19:15 WIB</span> agar pesanan tidak hangus.</p>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="grid grid-cols-1 gap-4">
+                        <a href="index.html"
+                            class="flex items-center justify-center gap-2 px-6 py-4 bg-white hover:bg-gray-50 text-[#111813] font-bold rounded-lg border-2 border-gray-200 transition-colors">
+                            <span class="material-symbols-outlined">home</span>
+                            Kembali ke Beranda
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Security Note -->
+            <div class="text-center text-sm text-gray-500 flex items-center justify-center gap-2">
+                <span class="material-symbols-outlined text-lg">lock</span>
+                <span>Pembayaran Aman & Terenkripsi SSL</span>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="w-full bg-white border-t border-[#f0f4f2]">
+        <div class="max-w-7xl mx-auto px-4 md:px-10 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <!-- Brand -->
+                <div class="col-span-1 md:col-span-1 flex flex-col gap-4">
+                    <div class="flex items-center gap-2 text-[#111813]">
+                        <div class="size-8 flex items-center justify-center text-[#13ec5b]">
+                            <img src="assets/img/Logo Gas Main.png" alt="Logo GasMain" class="w-8 h-8" />
+                        </div>
+                        <h2 class="text-lg font-bold">GasMain</h2>
+                    </div>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        Platform penyewaan lapangan olahraga terpercaya untuk gaya hidup sehat Anda.
+                    </p>
+                </div>
+                <!-- Links Column 1 -->
+                <div class="flex flex-col gap-3">
+                    <h4 class="font-bold text-[#111813]">Layanan</h4>
+                    <a class="text-gray-500 text-sm hover:text-[#13ec5b] transition-colors" href="#">Cari
+                        Lapangan</a>
+                    <a class="text-gray-500 text-sm hover:text-[#13ec5b] transition-colors" href="#">Membership</a>
+                    <a class="text-gray-500 text-sm hover:text-[#13ec5b] transition-colors" href="#">Promo</a>
+                </div>
+                <!-- Links Column 2 -->
+                <div class="flex flex-col gap-3">
+                    <h4 class="font-bold text-[#111813]">Perusahaan</h4>
+                    <a class="text-gray-500 text-sm hover:text-[#13ec5b] transition-colors" href="#">Tentang
+                        Kami</a>
+                    <a class="text-gray-500 text-sm hover:text-[#13ec5b] transition-colors" href="#">Karir</a>
+                    <a class="text-gray-500 text-sm hover:text-[#13ec5b] transition-colors" href="#">Kontak</a>
+                </div>
+                <!-- Socials -->
+                <div class="flex flex-col gap-3">
+                    <h4 class="font-bold text-[#111813]">Ikuti Kami</h4>
+                    <div class="flex gap-3">
+                        <a class="size-10 rounded-full bg-[#f0f4f2] flex items-center justify-center text-[#111813] hover:bg-[#13ec5b] hover:text-white transition-colors"
+                            href="#">
+                            <span class="material-symbols-outlined text-sm">public</span>
+                        </a>
+                        <a class="size-10 rounded-full bg-[#f0f4f2] flex items-center justify-center text-[#111813] hover:bg-[#13ec5b] hover:text-white transition-colors"
+                            href="#">
+                            <span class="material-symbols-outlined text-sm">alternate_email</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-[#f0f4f2] pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-400 text-sm text-center md:text-left">© 2024 SportBooking. All rights reserved.
+                </p>
+                <div class="flex gap-6">
+                    <a class="text-gray-400 text-sm hover:text-[#13ec5b]" href="#">Privacy Policy</a>
+                    <a class="text-gray-400 text-sm hover:text-[#13ec5b]" href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- FOOTER END -->
+
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/lapangan-data.js"></script>
+    <script src="js/booking.js"></script>
+
+
+</body>
+
+</html>

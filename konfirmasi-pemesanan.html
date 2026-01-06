@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Konfirmasi Pemesanan - GasMain</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;700;900&family=Noto+Sans:wght@400;500;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+
+<body class="bg-[#f6f8f6] text-[#111813]">
+
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-50 w-full border-b border-[#f0f4f2] bg-white/95 backdrop-blur">
+        <div class="px-4 md:px-10 py-3 flex items-center justify-between mx-auto max-w-7xl">
+            <!-- Logo -->
+            <a href="index.html">
+                <div class="flex items-center gap-3 text-[#111813] cursor-pointer">
+                    <div class="size-10 flex items-center justify-center text-[#13ec5b]">
+                        <img src="assets/img/Logo Gas Main.png" alt="Logo GasMain" class="w-10 h-10" />
+                    </div>
+                    <h2 class="text-lg md:text-xl font-bold leading-tight tracking-tight">GasMain</h2>
+                </div>
+            </a>
+            <!-- Desktop Nav & Actions -->
+            <div class="hidden lg:flex flex-1 items-center justify-end gap-8">
+                <nav class="flex items-center gap-8">
+                    <a class="text-sm font-medium leading-normal hover:text-[#13ec5b] transition-colors"
+                        href="index.html">Beranda</a>
+                    <a class="text-sm font-medium leading-normal hover:text-[#13ec5b] transition-colors"
+                        href="lapangan.html">Fasilitas</a>
+                    <a class="text-sm font-medium leading-normal hover:text-[#13ec5b] transition-colors"
+                        href="index.html#promo">Promo</a>
+                    <a class="text-sm font-medium leading-normal hover:text-[#13ec5b] transition-colors"
+                        href="https://wa.me/62895340502313?text=Halo%20saya%20ingin%20bertanya"
+                        target="_blank">Kontak</a>
+                </nav>
+
+                <div id="authButtons" class="flex gap-3">
+                    <a href="login.html"
+                        class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-[#f0f4f2] text-[#111813] text-sm font-bold hover:bg-gray-200 transition-colors">
+                        <span class="truncate">Masuk</span>
+                    </a>
+                    <a href="daftar.html"
+                        class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-[#13ec5b] text-[#111813] text-sm font-bold hover:bg-[#0fd650] transition-colors shadow-lg shadow-[#13ec5b]/20">
+                        <span class="truncate">Daftar</span>
+                    </a>
+                </div>
+
+                <div id="userProfile" class="hidden items-center gap-3">
+                    <img src="assets/img/avatar.jpg" alt="User" class="w-9 h-9 rounded-full object-cover border" />
+                    <span id="username" class="text-sm font-bold text-[#111813]">
+                        Mumtaaz
+                    </span>
+                </div>
+
+            </div>
+            <!-- Mobile Menu Button -->
+            <div class="lg:hidden">
+                <button id="mobileMenuBtn" class="p-2 text-[#111813]">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden border-t border-[#f0f4f2] bg-white">
+            <nav class="flex flex-col px-4 py-4 gap-4">
+                <a class="text-sm font-medium leading-normal hover:text-[#13ec5b] transition-colors py-2"
+                    href="index.html">Beranda</a>
+                <a class="text-sm font-medium leading-normal hover:text-[#13ec5b] transition-colors py-2"
+                    href="lapangan.html">Fasilitas</a>
+                <a class="text-sm font-medium leading-normal hover:text-[#13ec5b] transition-colors py-2"
+                    href="index.html#promo">Promo</a>
+                <a class="text-sm font-medium leading-normal hover:text-[#13ec5b] transition-colors py-2"
+                    href="https://wa.me/62895340502313?text=Halo%20saya%20ingin%20bertanya" target="_blank">Kontak</a>
+
+                <!-- Mobile Auth Buttons -->
+                <div id="mobileAuthButtons" class="flex flex-col gap-3 pt-4 border-t border-[#f0f4f2]">
+                    <a href="login.html"
+                        class="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-[#f0f4f2] text-[#111813] text-sm font-bold hover:bg-gray-200 transition-colors">
+                        <span class="truncate">Masuk</span>
+                    </a>
+                    <a href="daftar.html"
+                        class="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-[#13ec5b] text-[#111813] text-sm font-bold hover:bg-[#0fd650] transition-colors shadow-lg shadow-[#13ec5b]/20">
+                        <span class="truncate">Daftar</span>
+                    </a>
+                </div>
+
+                <!-- Mobile User Profile -->
+                <div id="mobileUserProfile" class="hidden flex-col gap-3 pt-4 border-t border-[#f0f4f2]">
+                    <div class="flex items-center gap-3 p-3 bg-[#f0f4f2] rounded-lg">
+                        <img src="assets/img/avatar.jpg" alt="User"
+                            class="w-10 h-10 rounded-full object-cover border-2 border-[#13ec5b]" />
+                        <div class="flex-1">
+                            <p id="mobileUsername" class="text-sm font-bold text-[#111813]">User</p>
+                            <p class="text-xs text-gray-500">Pengguna Aktif</p>
+                        </div>
+                    </div>
+                    <button onclick="logoutUser()"
+                        class="flex cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-10 px-6 bg-red-500 text-white text-sm font-bold hover:bg-red-600 transition-colors">
+                        <span class="material-symbols-outlined text-base">logout</span>
+                        <span class="truncate">Keluar</span>
+                    </button>
+                </div>
+
+            </nav>
+        </div>
+    </header>
+    <!-- NAVBAR END -->
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1">
+        <div class="max-w-7xl mx-auto px-4 md:px-10 py-8">
+
+            <!-- Header -->
+            <div class="mb-8">
+                <h1 class="text-3xl md:text-4xl font-black mb-2">Konfirmasi Pemesanan</h1>
+                <p class="text-gray-500">Pastikan detail pesanan anda sudah benar sebelum melakukan pembayaran.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+                <!-- LEFT: Form Data Pemesan & Metode Pembayaran -->
+                <div class="lg:col-span-2 space-y-6">
+
+                    <!-- Data Pemesan -->
+                    <div class="bg-white rounded-xl border border-gray-200 p-6">
+                        <div class="flex items-center gap-2 mb-6">
+                            <span class="material-symbols-outlined text-[#13ec5b]">person</span>
+                            <h2 class="text-xl font-bold">Data Pemesan</h2>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-bold mb-2">Nama Lengkap</label>
+                                <input type="text" id="namaLengkap" placeholder="Contoh: Budi Santoso"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-[#13ec5b] focus:ring-2 focus:ring-[#13ec5b]/20 outline-none" />
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-bold mb-2">Nomor WhatsApp</label>
+                                    <input type="tel" id="nomorWa" placeholder="+62 812 3456 7890"
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-[#13ec5b] focus:ring-2 focus:ring-[#13ec5b]/20 outline-none" />
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-bold mb-2">Email</label>
+                                    <input type="email" id="email" placeholder="budi@example.com"
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-[#13ec5b] focus:ring-2 focus:ring-[#13ec5b]/20 outline-none" />
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-2">
+                                <input type="checkbox" id="booking-other"
+                                    class="w-4 h-4 rounded border-gray-300 text-[#13ec5b] focus:ring-[#13ec5b]" />
+                                <label for="booking-other" class="text-sm text-gray-600">Pesan untuk orang lain?</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Metode Pembayaran -->
+                    <div class="bg-white rounded-xl border border-gray-200 p-6">
+                        <div class="flex items-center gap-2 mb-6">
+                            <span class="material-symbols-outlined text-[#13ec5b]">payments</span>
+                            <h2 class="text-xl font-bold">Metode Pembayaran</h2>
+                        </div>
+
+                        <div class="space-y-3">
+                            <!-- QRIS -->
+                            <label
+                                class="flex items-center justify-between p-4 border-2 border-[#13ec5b] bg-[#13ec5b]/5 rounded-lg cursor-pointer">
+                                <div class="flex items-center gap-3">
+                                    <input type="radio" name="payment" value="qris" checked
+                                        class="w-5 h-5 text-[#13ec5b] focus:ring-[#13ec5b]" />
+                                    <div>
+                                        <p class="font-bold">QRIS</p>
+                                        <p class="text-xs text-gray-500">Scan code untuk pembayaran instan</p>
+                                    </div>
+                                </div>
+                                <span class="material-symbols-outlined text-gray-400">qr_code_scanner</span>
+                            </label>
+
+                            <!-- Virtual Account -->
+                            <label
+                                class="flex items-center justify-between p-4 border-2 border-gray-300 rounded-lg cursor-pointer hover:border-[#13ec5b] transition-colors">
+                                <div class="flex items-center gap-3">
+                                    <input type="radio" name="payment" value="va"
+                                        class="w-5 h-5 text-[#13ec5b] focus:ring-[#13ec5b]" />
+                                    <div>
+                                        <p class="font-bold">Virtual Account</p>
+                                        <p class="text-xs text-gray-500">BCA, Mandiri, BNI, BRI</p>
+                                    </div>
+                                </div>
+                                <span class="material-symbols-outlined text-gray-400">account_balance</span>
+                            </label>
+
+                            <!-- Kartu Kredit -->
+                            <label
+                                class="flex items-center justify-between p-4 border-2 border-gray-300 rounded-lg cursor-pointer hover:border-[#13ec5b] transition-colors">
+                                <div class="flex items-center gap-3">
+                                    <input type="radio" name="payment" value="card"
+                                        class="w-5 h-5 text-[#13ec5b] focus:ring-[#13ec5b]" />
+                                    <div>
+                                        <p class="font-bold">Kartu Kredit / Debit</p>
+                                        <p class="text-xs text-gray-500">Visa, Mastercard</p>
+                                    </div>
+                                </div>
+                                <span class="material-symbols-outlined text-gray-400">credit_card</span>
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- RIGHT: Ringkasan Pesanan -->
+                <div class="lg:col-span-1">
+                    <div class="sticky top-24 bg-white rounded-xl border border-gray-200 shadow-lg overflow-hidden">
+
+                        <!-- Image -->
+                        <div class="relative h-48 bg-gradient-to-br from-teal-600 to-teal-800">
+                            <img src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=800" alt="Lapangan"
+                                class="w-full h-full object-cover opacity-50" />
+                            <div class="absolute top-4 right-4 px-3 py-1 bg-white rounded-full text-xs font-bold">
+                                Badminton
+                            </div>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="p-6">
+                            <h3 class="text-xl font-black mb-1">GOR Sudirman Hall A</h3>
+                            <div class="flex items-center gap-1 text-sm text-gray-500 mb-4">
+                                <span class="material-symbols-outlined text-sm">location_on</span>
+                                <span>Jakarta Selatan</span>
+                            </div>
+
+                            <div class="space-y-3 mb-4">
+                                <div class="flex items-start gap-3">
+                                    <span class="material-symbols-outlined text-gray-400 text-lg">calendar_today</span>
+                                    <div>
+                                        <p class="text-xs text-gray-500">Tanggal</p>
+                                        <p class="font-bold" id="tanggalBooking">Sabtu, 14 Okt 2023</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="material-symbols-outlined text-gray-400 text-lg">schedule</span>
+                                    <div>
+                                        <p class="text-xs text-gray-500">Waktu & Durasi</p>
+                                        <p class="font-bold" id="waktuBooking">19:00 - 21:00 (<span
+                                                id="durasiDisplay">2</span> Jam)</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="border-t pt-4 space-y-2 mb-4">
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600">Harga Sewa (<span id="durasiText">2</span> jam)</span>
+                                    <span class="font-bold" id="hargaSewa">Rp 160.000</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600">Biaya Layanan</span>
+                                    <span class="font-bold" id="biayaLayanan">Rp 10.000</span>
+                                </div>
+                                <div class="flex justify-between text-sm text-red-500" id="diskonRow">
+                                    <span>Diskon (20%)</span>
+                                    <span class="font-bold" id="diskonAmount">- Rp 0</span>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between items-center pt-4 border-t mb-6">
+                                <span class="font-bold">Total Bayar</span>
+                                <span class="text-2xl font-black text-[#13ec5b]" id="totalHarga">Rp 170.000</span>
+                            </div>
+
+                            <div class="flex items-start gap-2 mb-4">
+                                <input type="checkbox" id="agree"
+                                    class="w-4 h-4 mt-1 rounded border-gray-300 text-[#13ec5b] focus:ring-[#13ec5b]" />
+                                <label for="agree" class="text-xs text-gray-600">
+                                    Saya menyetujui <a href="#" class="text-[#13ec5b] font-bold hover:underline">Syarat
+                                        & Ketentuan</a> yang berlaku.
+                                </label>
+                            </div>
+
+                            <button onclick="prosesBooking()"
+                                class="w-full bg-[#13ec5b] hover:bg-[#0fd650] text-[#111813] font-bold py-3 rounded-lg transition-colors flex items-center justify-center gap-2">
+                                Lanjutkan ke Pembayaran
+                                <span class="material-symbols-outlined">arrow_forward</span>
+                            </button>
+
+                            <p class="text-center text-xs text-gray-500 mt-4 flex items-center justify-center gap-1">
+                                <span class="material-symbols-outlined text-sm">lock</span>
+                                Pembayaran Aman & Terenkripsi
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="w-full bg-white border-t border-[#f0f4f2]">
+        <div class="max-w-7xl mx-auto px-4 md:px-10 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <!-- Brand -->
+                <div class="col-span-1 md:col-span-1 flex flex-col gap-4">
+                    <div class="flex items-center gap-2 text-[#111813]">
+                        <div class="size-8 flex items-center justify-center text-[#13ec5b]">
+                            <img src="assets/img/Logo Gas Main.png" alt="Logo GasMain" class="w-8 h-8" />
+                        </div>
+                        <h2 class="text-lg font-bold">GasMain</h2>
+                    </div>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        Platform penyewaan lapangan olahraga terpercaya untuk gaya hidup sehat Anda.
+                    </p>
+                </div>
+                <!-- Links Column 1 -->
+                <div class="flex flex-col gap-3">
+                    <h4 class="font-bold text-[#111813]">Layanan</h4>
+                    <a class="text-gray-500 text-sm hover:text-[#13ec5b] transition-colors" href="#">Cari
+                        Lapangan</a>
+                    <a class="text-gray-500 text-sm hover:text-[#13ec5b] transition-colors" href="#">Membership</a>
+                    <a class="text-gray-500 text-sm hover:text-[#13ec5b] transition-colors" href="#">Promo</a>
+                </div>
+                <!-- Links Column 2 -->
+                <div class="flex flex-col gap-3">
+                    <h4 class="font-bold text-[#111813]">Perusahaan</h4>
+                    <a class="text-gray-500 text-sm hover:text-[#13ec5b] transition-colors" href="#">Tentang
+                        Kami</a>
+                    <a class="text-gray-500 text-sm hover:text-[#13ec5b] transition-colors" href="#">Karir</a>
+                    <a class="text-gray-500 text-sm hover:text-[#13ec5b] transition-colors" href="#">Kontak</a>
+                </div>
+                <!-- Socials -->
+                <div class="flex flex-col gap-3">
+                    <h4 class="font-bold text-[#111813]">Ikuti Kami</h4>
+                    <div class="flex gap-3">
+                        <a class="size-10 rounded-full bg-[#f0f4f2] flex items-center justify-center text-[#111813] hover:bg-[#13ec5b] hover:text-white transition-colors"
+                            href="#">
+                            <span class="material-symbols-outlined text-sm">public</span>
+                        </a>
+                        <a class="size-10 rounded-full bg-[#f0f4f2] flex items-center justify-center text-[#111813] hover:bg-[#13ec5b] hover:text-white transition-colors"
+                            href="#">
+                            <span class="material-symbols-outlined text-sm">alternate_email</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-[#f0f4f2] pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-400 text-sm text-center md:text-left">© 2024 SportBooking. All rights reserved.
+                </p>
+                <div class="flex gap-6">
+                    <a class="text-gray-400 text-sm hover:text-[#13ec5b]" href="#">Privacy Policy</a>
+                    <a class="text-gray-400 text-sm hover:text-[#13ec5b]" href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- FOOTER END -->
+
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/lapangan-data.js"></script>
+    <script src="js/booking.js"></script>
+</body>
+
+</html>
