@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kelola Lapangan - GasMain Admin</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
+
+    <style>
+        .brand-text { font-weight: 700 !important; }
+        .info-box { border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .nav-icon { color: #13ec5b !important; }
+        .lapangan-image { width: 50px; height: 50px; object-fit: cover; border-radius: 5px; }
+    </style>
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+    <!-- Navbar (sama seperti sebelumnya) -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="index.html" class="nav-link">Dashboard</a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="#">
+                    <i class="far fa-bell"></i>
+                    <span class="badge badge-warning navbar-badge">3</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <span class="dropdown-item dropdown-header">3 Booking Baru</span>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">
+                        <i class="fas fa-calendar-check mr-2"></i> Booking #12345
+                        <span class="float-right text-muted text-sm">5 mins</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item dropdown-footer">Lihat Semua</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="#">
+                    <i class="far fa-user"></i>
+                    <span class="d-none d-md-inline ml-1" id="adminName">Admin</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <a href="#" class="dropdown-item">
+                        <i class="fas fa-user mr-2"></i> Profile
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item" onclick="event.preventDefault(); logoutUser();">
+                        <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <a href="index.html" class="brand-link">
+            <img src="../assets/img/Logo Gas Main.png" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+            <span class="brand-text font-weight-light">GasMain Admin</span>
+        </a>
+
+        <div class="sidebar">
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="lapangan.html" class="nav-link active">
+                            <i class="nav-icon fas fa-futbol"></i>
+                            <p>Kelola Lapangan</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="booking.html" class="nav-link">
+                            <i class="nav-icon fas fa-calendar-check"></i>
+                            <p>Kelola Booking</p>
+                        </a>
+                    </li>
+                    <li class="nav-header">SETTINGS</li>
+                    <li class="nav-item">
+                        <a href="settings.html" class="nav-link">
+                            <i class="nav-icon fas fa-cog"></i>
+                            <p>Pengaturan</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link">
+                            <i class="nav-icon fas fa-arrow-left"></i>
+                            <p>Kembali ke Website</p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </aside>
+
+    <!-- Content -->
+    <div class="content-wrapper">
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Kelola Lapangan</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active">Kelola Lapangan</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="container-fluid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Daftar Lapangan</h3>
+                        <button onclick="showAddModal()" class="btn btn-success btn-sm float-right">
+                            <i class="fas fa-plus"></i> Tambah Lapangan
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th width="5%">No</th>
+                                        <th width="8%">Gambar</th>
+                                        <th>Nama Lapangan</th>
+                                        <th>Jenis</th>
+                                        <th>Lokasi</th>
+                                        <th>Harga/Jam</th>
+                                        <th>Rating</th>
+                                        <th>Status</th>
+                                        <th width="15%">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="lapanganTable">
+                                    <tr>
+                                        <td colspan="9" class="text-center">Loading data...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="main-footer">
+        <strong>Copyright &copy; 2025 <a href="#">GasMain</a>.</strong> All rights reserved.
+        <div class="float-right d-none d-sm-inline-block">
+            <b>Version</b> 1.0.0
+        </div>
+    </footer>
+</div>
+
+<!-- Modal Tambah/Edit -->
+<div class="modal fade" id="lapanganModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modalTitle">Tambah Lapangan</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <form id="lapanganForm">
+                <div class="modal-body">
+                    <input type="hidden" id="lapanganId">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Nama Lapangan</label>
+                                <input type="text" class="form-control" id="namaLapangan" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Jenis Olahraga</label>
+                                <select class="form-control" id="jenisOlahraga" required>
+                                    <option value="Badminton">Badminton</option>
+                                    <option value="Futsal">Futsal</option>
+                                    <option value="Padel">Padel</option>
+                                    <option value="Basket">Basket</option>
+                                    <option value="Voli">Voli</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Harga per Jam (Rp)</label>
+                                <input type="number" class="form-control" id="hargaPerJam" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Status</label>
+                                <select class="form-control" id="statusLapangan">
+                                    <option value="Tersedia">Tersedia</option>
+                                    <option value="Maintenance">Maintenance</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Lokasi</label>
+                        <input type="text" class="form-control" id="lokasiLapangan" required>
+                    </div>
+                    <div class="form-group">
+                        <label>URL Gambar</label>
+                        <input type="url" class="form-control" id="gambarLapangan">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Detail -->
+<div class="modal fade" id="detailModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Detail Lapangan</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body" id="detailContent"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/lapangan-data.js"></script>
+<script src="../js/admin-integration.js"></script>
+
+<script>
+    let lapanganData = [];
+
+    // Load data dari localStorage (yang sudah diisi oleh admin-integration.js)
+    function loadLapangan() {
+        lapanganData = JSON.parse(localStorage.getItem('lapanganData')) || [];
+        const tbody = document.getElementById('lapanganTable');
+        
+        if (lapanganData.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="9" class="text-center">Belum ada data lapangan</td></tr>';
+            return;
+        }
+
+        tbody.innerHTML = lapanganData.map((lap, index) => {
+            const badge = lap.status === 'Tersedia' ? 'badge-success' : 'badge-warning';
+            return `
+            <tr>
+                <td>${index + 1}</td>
+                <td>
+                    <img src="${lap.gambar || 'https://via.placeholder.com/50'}" 
+                         alt="${lap.nama}" 
+                         class="lapangan-image"
+                         onerror="this.src='https://via.placeholder.com/50'">
+                </td>
+                <td>${lap.nama}</td>
+                <td><span class="badge badge-info">${lap.jenis}</span></td>
+                <td>${lap.lokasi || '-'}</td>
+                <td>Rp ${lap.harga.toLocaleString('id-ID')}</td>
+                <td>
+                    ${lap.rating ? `
+                        <i class="fas fa-star text-warning"></i> ${lap.rating}
+                    ` : '-'}
+                </td>
+                <td><span class="badge ${badge}">${lap.status}</span></td>
+                <td>
+                    <button onclick="viewDetail('${lap.id}')" class="btn btn-sm btn-info" title="Lihat Detail">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                    <button onclick="editLapangan('${lap.id}')" class="btn btn-sm btn-primary" title="Edit">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button onclick="deleteLapangan('${lap.id}')" class="btn btn-sm btn-danger" title="Hapus">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+        `}).join('');
+    }
+
+    // View detail
+    function viewDetail(id) {
+        const lap = lapanganData.find(l => l.id === id);
+        if (!lap) return;
+        
+        const content = `
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="${lap.gambar}" class="img-fluid rounded" alt="${lap.nama}">
+                </div>
+                <div class="col-md-8">
+                    <table class="table table-sm">
+                        <tr><th width="150">Nama:</th><td>${lap.nama}</td></tr>
+                        <tr><th>Jenis:</th><td><span class="badge badge-info">${lap.jenis}</span></td></tr>
+                        <tr><th>Lokasi:</th><td>${lap.lokasi || '-'}</td></tr>
+                        <tr><th>Harga/Jam:</th><td>Rp ${lap.harga.toLocaleString('id-ID')}</td></tr>
+                        <tr><th>Rating:</th><td>${lap.rating ? `⭐ ${lap.rating}` : '-'}</td></tr>
+                        <tr><th>Status:</th><td><span class="badge ${lap.status === 'Tersedia' ? 'badge-success' : 'badge-warning'}">${lap.status}</span></td></tr>
+                    </table>
+                    ${lap.deskripsi ? `
+                        <div class="mt-3">
+                            <strong>Deskripsi:</strong>
+                            <p class="text-muted">${lap.deskripsi}</p>
+                        </div>
+                    ` : ''}
+                    ${lap.fasilitas && lap.fasilitas.length > 0 ? `
+                        <div class="mt-2">
+                            <strong>Fasilitas:</strong><br>
+                            ${lap.fasilitas.map(f => `<span class="badge badge-secondary mr-1">${f}</span>`).join('')}
+                        </div>
+                    ` : ''}
+                </div>
+            </div>
+        `;
+        
+        document.getElementById('detailContent').innerHTML = content;
+        $('#detailModal').modal('show');
+    }
+
+    // Show modal tambah
+    function showAddModal() {
+        document.getElementById('modalTitle').textContent = 'Tambah Lapangan';
+        document.getElementById('lapanganForm').reset();
+        document.getElementById('lapanganId').value = '';
+        $('#lapanganModal').modal('show');
+    }
+
+    // Edit lapangan
+    function editLapangan(id) {
+        const lap = lapanganData.find(l => l.id === id);
+        if (lap) {
+            document.getElementById('modalTitle').textContent = 'Edit Lapangan';
+            document.getElementById('lapanganId').value = lap.id;
+            document.getElementById('namaLapangan').value = lap.nama;
+            document.getElementById('jenisOlahraga').value = lap.jenis;
+            document.getElementById('hargaPerJam').value = lap.harga;
+            document.getElementById('statusLapangan').value = lap.status;
+            document.getElementById('lokasiLapangan').value = lap.lokasi || '';
+            document.getElementById('gambarLapangan').value = lap.gambar || '';
+            $('#lapanganModal').modal('show');
+        }
+    }
+
+    // Delete lapangan
+    function deleteLapangan(id) {
+        if (confirm('Yakin ingin menghapus lapangan ini?')) {
+            lapanganData = lapanganData.filter(l => l.id !== id);
+            localStorage.setItem('lapanganData', JSON.stringify(lapanganData));
+            loadLapangan();
+            alert('Lapangan berhasil dihapus!');
+        }
+    }
+
+    // Submit form
+    document.getElementById('lapanganForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const id = document.getElementById('lapanganId').value;
+        const data = {
+            id: id || `lapangan-${Date.now()}`,
+            nama: document.getElementById('namaLapangan').value,
+            jenis: document.getElementById('jenisOlahraga').value,
+            harga: parseInt(document.getElementById('hargaPerJam').value),
+            status: document.getElementById('statusLapangan').value,
+            lokasi: document.getElementById('lokasiLapangan').value,
+            gambar: document.getElementById('gambarLapangan').value || 'https://via.placeholder.com/400',
+            rating: 0,
+            fasilitas: []
+        };
+
+        if (id) {
+            // Update
+            const index = lapanganData.findIndex(l => l.id === id);
+            if (index !== -1) {
+                lapanganData[index] = { ...lapanganData[index], ...data };
+            }
+        } else {
+            // Add
+            lapanganData.push(data);
+        }
+
+        localStorage.setItem('lapanganData', JSON.stringify(lapanganData));
+        loadLapangan();
+        $('#lapanganModal').modal('hide');
+        alert('Data berhasil disimpan!');
+    });
+
+    // Init
+    window.addEventListener('DOMContentLoaded', function () {
+        requireAdmin();
+        loadLapangan();
+    });
+</script>
+
+</body>
+</html>

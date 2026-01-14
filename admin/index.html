@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard Admin - GasMain</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
+    
+    <style>
+        .brand-text { font-weight: 700 !important; }
+        .info-box { border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .nav-icon { color: #13ec5b !important; }
+    </style>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="index.html" class="nav-link">Dashboard</a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="#">
+                    <i class="far fa-bell"></i>
+                    <span class="badge badge-warning navbar-badge" id="notifCount">0</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <span class="dropdown-item dropdown-header" id="notifHeader">0 Booking Baru</span>
+                    <div class="dropdown-divider"></div>
+                    <div id="notifList"></div>
+                    <div class="dropdown-divider"></div>
+                    <a href="booking.html" class="dropdown-item dropdown-footer">Lihat Semua</a>
+                </div>
+            </li>
+            
+            <li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="#">
+                    <i class="far fa-user"></i>
+                    <span class="d-none d-md-inline ml-1" id="adminName">Admin</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <a href="#" class="dropdown-item">
+                        <i class="fas fa-user mr-2"></i> Profile
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item" onclick="event.preventDefault(); logoutUser();">
+                        <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Sidebar -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <a href="index.html" class="brand-link">
+            <img src="../assets/img/Logo Gas Main.png" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+            <span class="brand-text font-weight-light">GasMain Admin</span>
+        </a>
+
+        <div class="sidebar">
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link active">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="lapangan.html" class="nav-link">
+                            <i class="nav-icon fas fa-futbol"></i>
+                            <p>Kelola Lapangan</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="booking.html" class="nav-link">
+                            <i class="nav-icon fas fa-calendar-check"></i>
+                            <p>Kelola Booking</p>
+                        </a>
+                    </li>
+                    <li class="nav-header">SETTINGS</li>
+                    <li class="nav-item">
+                        <a href="settings.html" class="nav-link">
+                            <i class="nav-icon fas fa-cog"></i>
+                            <p>Pengaturan</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link">
+                            <i class="nav-icon fas fa-arrow-left"></i>
+                            <p>Kembali ke Website</p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </aside>
+
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Dashboard</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="content">
+            <div class="container-fluid">
+                <!-- Info boxes -->
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-success elevation-1"><i class="fas fa-calendar-check"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">Total Booking</span>
+                                <span class="info-box-number" id="totalBooking">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-info elevation-1"><i class="fas fa-calendar-day"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">Booking Hari Ini</span>
+                                <span class="info-box-number" id="bookingToday">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-futbol"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">Total Lapangan</span>
+                                <span class="info-box-number" id="totalLapangan">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-users"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">Total User</span>
+                                <span class="info-box-number" id="totalUser">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tables -->
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header border-transparent">
+                                <h3 class="card-title">Booking Terbaru</h3>
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table m-0">
+                                        <thead>
+                                            <tr>
+                                                <th>Kode Booking</th>
+                                                <th>Lapangan</th>
+                                                <th>User</th>
+                                                <th>Tanggal</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="recentBookingTable">
+                                            <tr>
+                                                <td colspan="5" class="text-center">Loading...</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="card-footer clearfix">
+                                <a href="booking.html" class="btn btn-sm btn-success float-right">Lihat Semua Booking</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Pendapatan Bulan Ini</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="text-center mb-4">
+                                    <h2 class="text-success mb-0" id="totalRevenue">Rp 0</h2>
+                                    <p class="text-muted">
+                                        <i class="fas fa-arrow-up text-success"></i> 
+                                        Dari booking confirmed
+                                    </p>
+                                </div>
+                                <div id="revenueByCategory">
+                                    <!-- Progress bars akan di-generate di sini -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="main-footer">
+        <strong>Copyright &copy; 2025 <a href="#">GasMain</a>.</strong> All rights reserved.
+        <div class="float-right d-none d-sm-inline-block">
+            <b>Version</b> 1.0.0
+        </div>
+    </footer>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+
+<!-- Load data files -->
+<script src="../js/auth.js"></script>
+<script src="../js/lapangan-data.js"></script>
+<script src="../js/admin-integration.js"></script>
+
+<script>
+    // Update dashboard dengan data real
+    function updateDashboard() {
+        // Get stats
+        const stats = window.AdminData.getDashboardStats();
+        document.getElementById('totalBooking').textContent = stats.totalBooking;
+        document.getElementById('bookingToday').textContent = stats.bookingToday;
+        document.getElementById('totalLapangan').textContent = stats.totalLapangan;
+        document.getElementById('totalUser').textContent = stats.totalUser;
+        
+        // Update notifikasi
+        const pendingBookings = JSON.parse(localStorage.getItem('bookingData') || '[]')
+            .filter(b => b.status === 'Pending');
+        document.getElementById('notifCount').textContent = pendingBookings.length;
+        document.getElementById('notifHeader').textContent = `${pendingBookings.length} Booking Baru`;
+        
+        // Update notif list
+        const notifList = document.getElementById('notifList');
+        notifList.innerHTML = pendingBookings.slice(0, 3).map(b => `
+            <a href="booking.html" class="dropdown-item">
+                <i class="fas fa-calendar-check mr-2"></i> ${b.id}
+                <span class="float-right text-muted text-sm">${b.tanggal}</span>
+            </a>
+        `).join('<div class="dropdown-divider"></div>');
+        
+        // Update recent bookings
+        const recentBookings = window.AdminData.getRecentBookings(4);
+        const tbody = document.getElementById('recentBookingTable');
+        
+        if (recentBookings.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="5" class="text-center">Belum ada booking</td></tr>';
+        } else {
+            tbody.innerHTML = recentBookings.map(b => {
+                let badgeClass = 'badge-success';
+                if (b.status === 'Pending') badgeClass = 'badge-warning';
+                else if (b.status === 'Cancelled') badgeClass = 'badge-danger';
+                
+                return `
+                    <tr>
+                        <td><a href="booking.html">${b.id}</a></td>
+                        <td>${b.lapangan}</td>
+                        <td>${b.user}</td>
+                        <td>${new Date(b.tanggal).toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' })}</td>
+                        <td><span class="badge ${badgeClass}">${b.status}</span></td>
+                    </tr>
+                `;
+            }).join('');
+        }
+        
+        // Update revenue
+        const revenue = window.AdminData.getRevenue();
+        document.getElementById('totalRevenue').textContent = 
+            `Rp ${revenue.total.toLocaleString('id-ID')}`;
+        
+        // Update revenue by category
+        const categoryDiv = document.getElementById('revenueByCategory');
+        const maxRevenue = Math.max(...Object.values(revenue.byCategory), 1);
+        
+        categoryDiv.innerHTML = Object.entries(revenue.byCategory).map(([category, amount]) => {
+            const percentage = (amount / maxRevenue * 100).toFixed(0);
+            return `
+                <div class="progress-group">
+                    ${category}
+                    <span class="float-right"><b>Rp ${amount.toLocaleString('id-ID')}</b></span>
+                    <div class="progress progress-sm">
+                        <div class="progress-bar bg-primary" style="width: ${percentage}%"></div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+    
+    // Init
+    window.addEventListener('DOMContentLoaded', function() {
+        requireAdmin();
+        
+        // Update nama admin
+        const user = JSON.parse(localStorage.getItem('user') || '{}');
+        if (user.name) {
+            document.getElementById('adminName').textContent = user.name;
+        }
+        
+        // Update dashboard
+        updateDashboard();
+    });
+</script>
+
+</body>
+</html>

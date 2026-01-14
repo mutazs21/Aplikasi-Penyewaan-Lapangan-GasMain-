@@ -62,12 +62,12 @@
             <div class="px-4 md:px-10 py-3 flex items-center justify-between mx-auto max-w-7xl">
                 <!-- Logo -->
                 <a href="index.html">
-                <div class="flex items-center gap-3 text-[#111813] cursor-pointer">
-                    <div class="size-10 flex items-center justify-center text-[#13ec5b]">
-                        <img src="assets/img/Logo Gas Main.png" alt="Logo GasMain" class="w-10 h-10" />
+                    <div class="flex items-center gap-3 text-[#111813] cursor-pointer">
+                        <div class="size-10 flex items-center justify-center text-[#13ec5b]">
+                            <img src="assets/img/Logo Gas Main.png" alt="Logo GasMain" class="w-10 h-10" />
+                        </div>
+                        <h2 class="text-lg md:text-xl font-bold leading-tight tracking-tight">GasMain</h2>
                     </div>
-                    <h2 class="text-lg md:text-xl font-bold leading-tight tracking-tight">GasMain</h2>
-                </div>
                 </a>
                 <!-- Desktop Nav & Actions -->
                 <div class="hidden lg:flex flex-1 items-center justify-end gap-8">
@@ -83,6 +83,7 @@
                             target="_blank">Kontak</a>
                     </nav>
 
+                    <!-- Auth Buttons - Tampil saat belum login -->
                     <div id="authButtons" class="flex gap-3">
                         <a href="login.html"
                             class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-[#f0f4f2] text-[#111813] text-sm font-bold hover:bg-gray-200 transition-colors">
@@ -94,11 +95,31 @@
                         </a>
                     </div>
 
-                    <div id="userProfile" class="hidden items-center gap-3">
-                        <img src="assets/img/avatar.jpg" alt="User" class="w-9 h-9 rounded-full object-cover border" />
-                        <span id="username" class="text-sm font-bold text-[#111813]">
-                            Mumtaaz
-                        </span>
+                    <!-- User Profile - Tampil saat sudah login -->
+                    <div id="userProfile" class="hidden relative">
+                        <button id="profileBtn"
+                            class="flex items-center gap-3 cursor-pointer hover:bg-[#f0f4f2] rounded-lg px-3 py-2 transition-colors">
+                            <img src="assets/img/avatar.jpg" alt="User"
+                                class="w-9 h-9 rounded-full object-cover border-2 border-[#13ec5b]" />
+                            <span id="username" class="text-sm font-bold text-[#111813]">User</span>
+                            <span class="material-symbols-outlined text-gray-500">expand_more</span>
+                        </button>
+
+                        <!-- Dropdown Menu -->
+                        <div id="profileDropdown"
+                            class="hidden absolute right-0 top-full mt-2 w-56 bg-white rounded-lg shadow-xl border border-[#f0f4f2] py-2 z-50">
+                            <div class="px-4 py-3 border-b border-[#f0f4f2]">
+                                <p id="userEmail" class="text-xs text-gray-500">user@example.com</p>
+                                <p class="text-sm font-bold text-[#111813] mt-1">Pengguna Aktif</p>
+                            </div>
+                            <div class="border-t border-[#f0f4f2] mt-2 pt-2">
+                                <button onclick="logoutUser()"
+                                    class="flex items-center gap-3 px-4 py-3 hover:bg-red-50 transition-colors w-full text-left">
+                                    <span class="material-symbols-outlined text-red-500">logout</span>
+                                    <span class="text-sm font-medium text-red-500">Keluar</span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
