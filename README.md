@@ -12,7 +12,7 @@
 
 **GasMain** adalah aplikasi web untuk mempermudah proses penyewaan lapangan olahraga seperti Badminton, Futsal, Basket, dan Voli. Aplikasi ini dilengkapi dengan dashboard admin berbasis AdminLTE untuk mengelola lapangan dan booking secara real-time.
 
-**Project ini dibuat untuk:** Tugas Akhir Semester 1 - Mata Kuliah Pemrograman Web
+**Project ini dibuat untuk:** Tugas Akhir Semester 1 - Mata Kuliah UI/UX
 
 ## ✨ Fitur Utama
 
